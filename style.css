@@ -1,4 +1,10 @@
-/* body{
+body{
     /* background-color: black;
     color: white; */
-} */
+}
+.left{
+    width: 25vw;
+}
+.right{
+    width: 75vw;
+}
