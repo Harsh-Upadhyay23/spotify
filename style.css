@@ -52,14 +52,58 @@ body{
     gap: 13px;
     position: absolute;
     bottom: 0;
+    padding: 10px 0px;
 }
 .footer a{
     color: grey;
+    
 }
 .header{
     display: flex;
     justify-content:space-between;
+    background-color:#252525;
 }
-.header *{
+.header> *{
     padding: 20px;
+    
+}
+.spotifyPlaylists{
+    padding: 16px;
+
+}
+.cardContainer{
+    margin: 30px;
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+.card{  
+    width: 200px;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #252525;
+    position: relative;
+}
+.card >*{
+    padding-top: 10px;
+}
+.card img{
+    width: 100%;
+    object-fit: contain;
+}
+.play {
+  width: 28px;
+  height: 28px;
+  background-color: #1fdf64;
+  border-radius: 50%;
+
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 273px;
+  right: 17px;
+  opacity: 0;
+  transition:all 1s ease-out;
 }
