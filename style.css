@@ -1,22 +1,28 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato:wght@700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
-*{
+
+* {
     margin: 0;
     padding: 0;
     font-family: 'Roboto', sans-serif;
 }
-body{
+
+body {
     background-color: black;
     color: white;
 }
-.left{
+
+.left {
     width: 25vw;
     padding: 10px;
 }
-.right{
+
+.right {
     width: 75vw;
     margin: 16px 0;
+
 }
-.home ul li{
+
+.home ul li {
     display: flex;
     gap: 15px;
     list-style-type: none;
@@ -24,28 +30,34 @@ body{
     padding-top: 14px;
     font-weight: bold;
 }
-.home{
+
+.home {
     /* padding:10px ; */
 }
-.heading{
-     display: flex;
+
+.heading {
+    display: flex;
     gap: 15px;
-   
-    width:100% ;
+
+    width: 100%;
     padding-top: 14px;
-    padding:23px 14px;
+    padding: 23px 14px;
     font-weight: bold;
     align-items: center;
     font-size: 13px;
 
-}.heading img{
+}
+
+.heading img {
     width: 30px;
 }
-.library{
+
+.library {
     min-height: 80vh;
     position: relative;
 }
-.footer{
+
+.footer {
     display: flex;
     font-size: 10px;
     color: grey;
@@ -54,56 +66,104 @@ body{
     bottom: 0;
     padding: 10px 0px;
 }
-.footer a{
+
+.footer a {
     color: grey;
-    
+
 }
-.header{
+
+.header {
     display: flex;
-    justify-content:space-between;
-    background-color:#252525;
+    justify-content: space-between;
+    background-color: rgb(34, 34, 34);
 }
-.header> *{
+
+.header>* {
     padding: 20px;
-    
+
 }
-.spotifyPlaylists{
+
+.spotifyPlaylists {
     padding: 16px;
 
 }
-.cardContainer{
+
+.cardContainer {
     margin: 30px;
     display: flex;
     gap: 10px;
     flex-wrap: wrap;
+    overflow-y: scroll;
+    max-height: 70vh;
 }
-.card{  
+
+.card {
     width: 200px;
     padding: 10px;
     border-radius: 5px;
     background-color: #252525;
     position: relative;
 }
-.card >*{
+
+.card>* {
     padding-top: 10px;
 }
-.card img{
+
+.card img {
     width: 100%;
     object-fit: contain;
 }
-.play {
-  width: 28px;
-  height: 28px;
-  background-color: #1fdf64;
-  border-radius: 50%;
 
-  padding: 4px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: absolute;
-  top: 273px;
-  right: 17px;
-  opacity: 0;
-  transition:all 1s ease-out;
+.play {
+    width: 28px;
+    height: 28px;
+    background-color: #1fdf64;
+    border-radius: 50%;
+
+    padding: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 273px;
+    right: 17px;
+    opacity: 0;
+    transition: all 1s ease-out;
+}
+
+.buttons >* {
+    margin: 0 12px;
+}
+
+.signupbtn {
+    background-color: rgb(34, 34, 34);
+    color: rgb(156, 148, 148);
+    font-weight: bold;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.signupbtn:hover {
+    font-size: 17px;
+    color: white;
+}
+
+.loginbtn {
+    background-color: white;
+    border-radius: 21px;
+    color: black;
+    font-size: 16px;
+    padding: 10px;
+    width: 79px;
+    cursor: pointer;
+}
+
+.loginbtn:hover {
+
+
+    font-weight: bold;
+    font-size: 17px;
+
 }
