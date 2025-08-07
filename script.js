@@ -1,9 +1,10 @@
 console.log('js starts here')
  let currentSong=new Audio();
+  let songs;
 
  function secondsToMinutesSeconds(seconds) {
     if (isNaN(seconds) || seconds < 0) {
-        return "Invalid input";
+        return "00:00";
     }
 
     const minutes = Math.floor(seconds / 60);
@@ -16,12 +17,12 @@ console.log('js starts here')
 }
 
 async function getSongs() {
-    let a = await fetch("http://127.0.0.1:5500/songs/")
+    let a = await fetch("http://192.168.0.101:5500/songs/")
     let response = await a.text();
     let div =document.createElement("div");
     div.innerHTML=response;
     let as=div.getElementsByTagName('a')
-    let songs=[];
+    songs=[]
     for(let index=0;index<as.length;index++){
         const element=as[index];
         if(element.href.endsWith(".mp3")){
@@ -49,7 +50,7 @@ const playMusic=(track,pause=false)=>{
 async function main() {
    
     // get the list of all songs
-    let songs= await getSongs();
+     songs= await getSongs();
     playMusic(songs[0],true)
     // console.log(songs)  song 
    let songUL= document.querySelector(".songList").getElementsByTagName("ul")[0]
@@ -91,7 +92,7 @@ async function main() {
     // listen for time update event
     currentSong.addEventListener("timeupdate",()=>{
         console.log(currentSong.currentTime,currentSong.duration);
-        document.querySelector(".songtime").innerHTML=`${secondsToMinutesSeconds(currentSong.currentTime)}/${secondsToMinutesSeconds(currentSong.duration)}`
+        document.querySelector(".songtime").innerHTML=`${secondsToMinutesSeconds(currentSong.currentTime)} / ${secondsToMinutesSeconds(currentSong.duration)}`
         document.querySelector(".circle").style.left=(currentSong.currentTime/currentSong.duration)*100+"%";
 
     })
@@ -112,6 +113,25 @@ document.querySelector(".hamburger").addEventListener("click",()=>{
 
 document.querySelector(".close").addEventListener("click",()=>{
     document.querySelector(".left").style.left="-120%";
+})
+
+//add an event listener for previous 
+previous.addEventListener("click",()=>{
+    currentSong.pause();
+    console.log(currentSong.src.split("/").slice(-1)[0])
+     let a=songs.indexOf(currentSong.src.split("/").slice(-1)[0]);
+     if(a==0)a=songs.length;
+    playMusic(songs[a-1]);
+})
+
+//add an event listener for p next
+next.addEventListener("click",()=>{
+     currentSong.pause();
+    let a=songs.indexOf(currentSong.src.split("/").slice(-1)[0]);
+      if(a==songs.length-1) a=-1;
+    playMusic(songs[a+1]);
+    
+    
 })
 
     
