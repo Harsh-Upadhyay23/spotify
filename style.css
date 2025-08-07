@@ -16,7 +16,8 @@ body {
     width: 25vw;
     padding: 10px;
 }
-.left .close{
+
+.left .close {
     position: absolute;
     right: 31px;
     top: 25px;
@@ -105,6 +106,7 @@ body {
     flex-wrap: wrap;
     overflow-y: auto;
     max-height: 70vh;
+   
 }
 
 .card {
@@ -181,17 +183,18 @@ body {
 .playbar {
     display: flex;
     justify-content: center;
-    align-items: center;  
+    align-items: center;
     position: fixed;
     bottom: 30px;
     width: 65.5vw;
     padding: 12px;
     filter: invert(1);
-    background-color: #dad5d5;
+    background-color: #dadad5;
     border-radius: 10px;
     min-height: 40px;
     z-index: 2;
 }
+
 /* .playbar {
     display: flex;
     justify-content: center;
@@ -206,31 +209,35 @@ body {
     width: 70vw;
     min-height: 40px;
 } */
- .hamburger{
+.hamburger {
     display: none;
- }
- .hamburgerContainer{
+}
+
+.hamburgerContainer {
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 14px;
- }
+}
 
 .songbuttons {
     display: flex;
     gap: 16px;
     justify-content: center;
 }
-.songList{
+
+.songList {
     height: 540px;
     overflow: auto;
     margin-bottom: 44px;
 
 }
+
 .songList ul {
     padding: 0 12px;
 
 }
+
 .songList .info {
     font-size: 14px;
     width: 344px;
@@ -266,6 +273,7 @@ body {
     width: 64px;
     padding: 12px;
 }
+
 /* .seekbar{
     height: 2px;
     width: 90%;
@@ -287,47 +295,80 @@ body {
     margin: 6px;
     cursor: pointer;
 }
-.circle{
+
+.circle {
     width: 13px;
     height: 13px;
     border-radius: 13px;
     background-color: black;
-    position:relative;
+    position: relative;
     bottom: 6px;
     left: 0%;
     transition: left 0.5s;
 }
-.songbuttons img{
+
+.songbuttons img {
     cursor: pointer;
 }
-.songinfo, .songtime{
+
+.songinfo,
+.songtime {
     color: black;
     padding: 0 12px;
 }
-.abovebar{
+
+.abovebar {
     display: flex;
     justify-content: space-between;
     margin: 20px 0;
     width: 100%;
 }
 
-@media (max-width :1400px){
-    .left{
+@media (max-width :1400px) {
+    .left {
         position: absolute;
         left: -120%;
         transition: all .3s;
         z-index: 1;
         width: 370px;
         background-color: black;
+        z-index: 5;
     }
-    .right{
-        width: 100vw;
-    }
-    .playbar{
-        width: 93vw;
-    }
-    .hamburger{
-        display: block;
+    .left .close{
+        position: absolute;
+        right: 31px;
+        top: 25px;
+        width: 29px;
     }
 
+    .right {
+        width: 100vw;
+        margin:0 ;
+    }
+
+    .playbar {
+        width: calc(100vw - 60px);
+
+    }
+    .seekbar{
+         width: calc(100vw - 70px);
+    }
+
+    .hamburger {
+        display: block;
+    }
+    .abovebar {
+    display: flex;
+    justify-content: space-between;
+    margin: 20px 0;
+    width: 100%;
+}
+.card{
+    width: 90vw;
+    height: auto;
+}
+.cardContainer{
+    margin: 0;
+    justify-content: center;
+}
 }
