@@ -20,7 +20,8 @@ function secondsToMinutesSeconds(seconds) {
 
 async function getSongs(folder) {
     currFolder = folder;
-    let a = await fetch(`http://127.0.0.1:5500/${folder}/`)
+    // let a = await fetch(`http://127.0.0.1:5500/${folder}/`)
+     let a = await fetch(`/${folder}/`)
     let response = await a.text();
     let div = document.createElement("div");
     div.innerHTML = response;
@@ -57,7 +58,7 @@ async function getSongs(folder) {
         })
 
     })
-    return songs
+    return songs;
 
 
 }
@@ -76,7 +77,8 @@ const playMusic = (track, pause = false) => {
 }
 
 async function displayAlbums() {
-    let a = await fetch(`http://127.0.0.1:5500/songs/`)
+    // let a = await fetch(`http://127.0.0.1:5500/songs/`)
+    let a = await fetch(`/songs/`)
     let response = await a.text();
     let div = document.createElement("div");
     div.innerHTML = response;
@@ -89,7 +91,8 @@ async function displayAlbums() {
             let folder = e.href.split("/").slice(-2)[1];
             // console.log(folder);
             //get the metadata of the folder
-            let a = await fetch(`http://127.0.0.1:5500/songs/${folder}/info.json`)
+            // let a = await fetch(`http://127.0.0.1:5500/songs/${folder}/info.json`)
+             let a = await fetch(`/songs/${folder}/info.json`)
             let response = await a.json();
             console.log(response)
             cardContainer.innerHTML=cardContainer.innerHTML + ` <div data-folder="${folder}" class="card">
@@ -126,7 +129,7 @@ async function displayAlbums() {
 async function main() {
 
     // get the list of all songs
-    await getSongs();
+    await getSongs("songs/cs");
     playMusic(songs[0], true)
     // console.log(songs)  song 
 
@@ -194,7 +197,7 @@ async function main() {
         console.log("setting volume to :", e.target.value, "/ 100");
         currentSong.volume = parseInt(e.target.value) / 100
         if(currentSong.volume>0){
-            document.querySelector(".volume>img").src = document.querySelector(".volume>img").src.replace("icons/mute.svg", "icons/volume.svg");
+            document.querySelector(".volume>img").src = document.querySelector(".volume>img").src.replace("img/mute.svg", "img/volume.svg");
         } 
     })
 
@@ -210,21 +213,20 @@ async function main() {
     //     }
     // })
    
-    document.querySelector(".volume img").addEventListener("click", (e) => {
-    const src = e.target.src;
-       
-    if (src.includes("volume.svg")) {
-        e.target.src = "img/mute.svg";
-        currentSong.volume=0;
-        document.querySelector(".range").getElementsByTagName("input")[0].value=0;
-    } else if (src.includes("mute.svg")) {
-        e.target.src = "img/volume.svg";
-          currentSong.volume=0.1;
-          document.querySelector(".range").getElementsByTagName("input")[0].value=10;
-    }
-
-    console.log("Current image:", e.target.src);
-});
+   //add event listener to mute the track
+    document.querySelector(".volume>img").addEventListener("click", (e) => {
+        // console.log(e.target);
+        if (e.target.src.includes("img/volume.svg")) {
+            e.target.src = e.target.src.replace("img/volume.svg", "img/mute.svg");
+            currentSong.volume = 0
+            document.querySelector(".range").getElementsByTagName("input")[0].value = 0;
+        }
+        else {
+            e.target.src = e.target.src.replace("img/mute.svg", "img/volume.svg");
+            currentSong.volume = 0.1;
+            document.querySelector(".range").getElementsByTagName("input")[0].value = 10;
+        }
+    })
 
 
 
