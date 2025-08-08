@@ -374,7 +374,7 @@ body {
 @media (max-width :1200px) {
     .left {
         position: absolute;
-        left: -120%;
+        left: -130%;
         transition: all .3s;
         z-index: 1;
         width: 370px;
@@ -461,10 +461,26 @@ body {
      bottom: 93px;
         right: 21px;
     }
+    .playbar{
+        right: 25px;
+    }
 }
 
 @media (max-width :500px) {
     .card {
-        width: auto;
+        width: 100%;
     }
+
+    .buttons >*{
+        margin: 0 6px;
+    }
+    .cardContainer{
+        max-height: auto;
+        overflow-y: unset;
+    }
+    .spotifyPlaylists{
+        padding:px ;
+    }
+    
+
 }
